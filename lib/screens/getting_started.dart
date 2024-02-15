@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:smart_agriculture/components/button.dart';
+import 'package:smart_agriculture/routes/route.dart';
 
 class GettingStarted extends StatelessWidget {
   const GettingStarted({Key? key}) : super(key: key);
@@ -40,26 +43,15 @@ class GettingStarted extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
+                  AppButtons(
+                    textColor: Colors.white,
+                    backgroundColor: const Color(0xFF34a0a4),
+                    text: 'GET STARTED',
+                    borderColor: Colors.white,
+                    onTap: () {
+                      Get.toNamed(Routes.LOGIN!);
                     },
-                    style: TextButton.styleFrom(
-                      primary: Colors.white,
-                      backgroundColor: Color(0xFF34a0a4),
-                      padding: EdgeInsets.all(16.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                    ),
-                    child: const Text(
-                      'GET STARTED',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
+                  ),
                 ],
               ),
             ),

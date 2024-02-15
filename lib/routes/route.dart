@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:smart_agriculture/screens/getting_started.dart';
+import 'package:smart_agriculture/screens/home_screen.dart';
+import 'package:smart_agriculture/screens/login.dart';
 
 import '../bindings/splash_binding.dart';
 import '../screens/splash_screen.dart';
@@ -7,6 +9,8 @@ import '../screens/splash_screen.dart';
 class Routes {
   static const INITIAL = '/splash';
   static const MAIN_PAGE = '/main_page';
+  static const LOGIN = '/login';
+  static const HOME = '/home';
 }
 
 class Pages {
@@ -20,6 +24,14 @@ class Pages {
     GetPage(
       name: Routes.MAIN_PAGE,
       page: () => const GettingStarted(),
+    ),
+    GetPage(
+      name: Routes.LOGIN,
+      page: () => const Login(),
+    ),
+    GetPage(
+      name: Routes.HOME,
+      page: () => const HomeScreen(),
     ),
   ];
 }
