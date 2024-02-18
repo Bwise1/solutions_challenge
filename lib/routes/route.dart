@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:smart_agriculture/bindings/auth_binding.dart';
 import 'package:smart_agriculture/screens/getting_started.dart';
 import 'package:smart_agriculture/screens/home_screen.dart';
 import 'package:smart_agriculture/screens/login.dart';
@@ -27,7 +28,8 @@ class Pages {
     ),
     GetPage(
       name: Routes.LOGIN,
-      page: () => const Login(),
+      binding: AuthBinding(),
+      page: () => Login(),
     ),
     GetPage(
       name: Routes.HOME,

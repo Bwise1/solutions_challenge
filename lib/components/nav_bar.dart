@@ -36,11 +36,19 @@ class _MyNavBarState extends State<MyNavBar> {
       return Container(
         height: 70,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(color: themeData.colorScheme.secondary),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10,
+            )
+          ],
+        ),
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: themeData.colorScheme.background,
+          backgroundColor: Colors.white,
           currentIndex: controller.currentIndex.value,
           useLegacyColorScheme: false,
           selectedLabelStyle: const TextStyle(

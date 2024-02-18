@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993727744571",
+    "project_id": "smart-agriculture-414515",
+    "storage_bucket": "smart-agriculture-414515.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993727744571:android:fd7d8f7f21c717d052ea1e",
+        "android_client_info": {
+          "package_name": "com.example.smart_agriculture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993727744571-tad7836g2iotag5msdhsv17p73s8nbic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHc--ls7L2RRAZMIACjcw5lyDxa02zzp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993727744571-tad7836g2iotag5msdhsv17p73s8nbic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

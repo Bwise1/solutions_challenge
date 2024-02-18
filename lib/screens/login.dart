@@ -3,36 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_agriculture/components/button.dart';
+import 'package:smart_agriculture/controllers/auth_controller.dart';
 import 'package:smart_agriculture/routes/route.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
-
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Login extends GetView<AuthController> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
   String _error = '';
 
-  Future<void> _handleLogin() async {
-    if (_usernameController.text.isEmpty || _passwordController.text.isEmpty) {
-      setState(() {
-        _error = 'Please fill in both username and password.';
-      });
-    } else {
-      setState(() {
-        _error = '';
-      });
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('login', true);
-      await prefs.setString('user', _usernameController.text);
-      // setLogin(true);
-      // setUser(_usernameController.text);
-    }
-  }
+  Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +59,7 @@ class _LoginState extends State<Login> {
               imagePath: ('assets/icons/google.svg'),
               isSvg: true,
               text: "Continue with Google",
-              onTap: () => {},
+              onTap: () => {controller.handleSignIn()},
             )
           ],
         ),
