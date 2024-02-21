@@ -17,16 +17,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final NavigationController navController = Get.put(NavigationController());
 
-  final List<Widget> _pages = const <Widget>[
+  final List<Widget> _pages = <Widget>[
     Dashboard(),
     Charts(),
-    History(),
-    Account(),
+    const History(),
+    const Account(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyNavBar(),
+      bottomNavigationBar: const MyNavBar(),
       body: Obx(() {
         return _pages[navController.currentIndex.value];
       }),

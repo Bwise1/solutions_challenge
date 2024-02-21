@@ -10,14 +10,27 @@ class AuthController extends GetxController {
   );
 
   var isUserSignedIn = false.obs;
+  var userDisplayname = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
       isUserSignedIn.value = (account != null);
+      if (account != null) {
+        userDisplayname.value = account.displayName!;
+      }
     });
+
     _googleSignIn.signInSilently();
+
+    // Check sign-in status when the app starts
+    _checkSignInStatus();
+  }
+
+  Future<void> _checkSignInStatus() async {
+    bool isSignedIn = await _googleSignIn.isSignedIn();
+    isUserSignedIn.value = isSignedIn;
   }
 
   Future<void> handleSignIn() async {
@@ -25,8 +38,10 @@ class AuthController extends GetxController {
       await _googleSignIn.signIn();
     } catch (error) {
       print(error);
+      // TODO: Show an error message to the user or log the error
     }
   }
 
-  Future<void> handleSignOut() => _googleSignIn.disconnect();
+  Future<void> handleSignOut() =>
+      _googleSignIn.signOut(); // Sign out the user without disconnecting them
 }

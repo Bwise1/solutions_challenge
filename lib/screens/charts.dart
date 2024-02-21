@@ -1,56 +1,41 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_charts/flutter_charts.dart';
+import 'package:get/get.dart';
+import 'package:smart_agriculture/controllers/dashboard_controller.dart';
 
-class Charts extends StatefulWidget {
-  const Charts({super.key});
+class Charts extends StatelessWidget {
+  Charts({super.key});
 
-  @override
-  State<Charts> createState() => _ChartsState();
-}
-
-class _ChartsState extends State<Charts> {
+  final DashboardController dashboardController =
+      Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: SafeArea(
-      child: Center(
-        child: Text('Charts'),
+            child: SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            width: 300,
+            height: 200,
+            child: BarChart(
+              BarChartData(
+                barGroups: dashboardController.dataPoints
+                    .map((item) => BarChartGroupData(
+                          x: DateTime.parse(item.timestamp).hour,
+                          barRods: [
+                            BarChartRodData(
+                                y: double.parse(
+                                    item.currentTemp.toStringAsFixed(2)),
+                                colors: [Colors.red]),
+                          ],
+                        ))
+                    .toList(),
+              ),
+            ),
+          )
+        ],
       ),
-    ));
-  }
-
-  ChartData chartData = ChartData(
-    dataRows: const [
-      [30.0, 25.0, 40.0, 35.0, 45.0], // Replace with your actual data
-      [70.0, 75.0, 65.0, 80.0, 85.0], // Replace with your actual data
-    ],
-    xUserLabels: const [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May'
-    ], // Replace with your actual labels
-    dataRowsLegends: const [
-      'Temperature',
-      'Humidity'
-    ], // Replace with your actual legends
-    chartOptions: const ChartOptions(),
-  );
-  ChartData _getHumData() {
-    return ChartData(
-      dataRows: const [
-        [70.0, 75.0, 65.0, 80.0, 85.0], // Replace with your actual data
-      ],
-      xUserLabels: const [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May'
-      ], // Replace with your actual labels
-      dataRowsLegends: const ['Humidity'], // Replace with your actual legend
-      chartOptions: const ChartOptions(),
-    );
+    )));
   }
 }

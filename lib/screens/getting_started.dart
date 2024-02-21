@@ -19,20 +19,28 @@ class GettingStarted extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text(
-                    'SMART FIELD',
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const Text(
-                    'For Monitoring',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  const Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'SMART FIELD',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          'For Monitoring',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   CachedNetworkImage(
@@ -43,15 +51,18 @@ class GettingStarted extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                   ),
-                  AppButtons(
-                    textColor: Colors.white,
-                    backgroundColor: const Color(0xFF34a0a4),
-                    text: 'GET STARTED',
-                    borderColor: Colors.white,
-                    onTap: () {
-                      Get.toNamed(Routes.LOGIN!);
-                    },
-                  ),
+                  SizedBox(
+                    width: 200, // Set the width to your desired value
+                    child: AppButtons(
+                      textColor: Colors.white,
+                      backgroundColor: const Color(0xFF34a0a4),
+                      text: 'GET STARTED',
+                      borderColor: Colors.white,
+                      onTap: () {
+                        Get.toNamed(Routes.LOGIN!);
+                      },
+                    ),
+                  )
                 ],
               ),
             ),

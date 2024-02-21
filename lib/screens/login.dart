@@ -5,12 +5,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_agriculture/components/button.dart';
 import 'package:smart_agriculture/controllers/auth_controller.dart';
 import 'package:smart_agriculture/routes/route.dart';
+import 'package:smart_agriculture/utils/spacing.dart';
 
 class Login extends GetView<AuthController> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  String _error = '';
+  final String _error = '';
 
   Login({super.key});
 
@@ -20,6 +21,8 @@ class Login extends GetView<AuthController> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             CachedNetworkImage(
               imageUrl:
@@ -29,22 +32,29 @@ class Login extends GetView<AuthController> {
             ),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Username',
               ),
             ),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Password',
               ),
               obscureText: true,
             ),
             if (_error.isNotEmpty)
-              Text(_error, style: TextStyle(color: Colors.red)),
-            ElevatedButton(
-              onPressed: () => {Get.toNamed(Routes.HOME)},
-              child: const Text('Login'),
+              Text(_error, style: const TextStyle(color: Colors.red)),
+            addVerticalSpace(15),
+            SizedBox(
+              width: 200, // Set the width to your desired value
+              child: AppButtons(
+                textColor: Colors.white,
+                backgroundColor: const Color(0xFF34a0a4),
+                text: 'Login',
+                borderColor: Colors.white,
+                onTap: () => {Get.toNamed(Routes.HOME)},
+              ),
             ),
             const Text('Don\'t have an account?'),
             TextButton(
